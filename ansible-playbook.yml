@@ -1,18 +1,25 @@
 ---
 - name: Create Instances
   hosts: localhost
-  gather_facts: False
-
   tasks:
+    - name: Create compile machine
       ec2:
-         key_name: key
-         group: test
-         instance_type: t2.micro
-         image: "{{ ami-092391a11f8aa4b7b }}"
-         wait: true
-         exact_count: 2
-         count_tag:
-            Name: warhello
-         instance_tags:
-            Name: warhello
-      register: ec2
+        key_name: key
+        instance_type: t2.micro
+        image: ami-092391a11f8aa4b7b
+        wait: yes
+        group: compile
+        count: 1
+        vpc_subnet_id: subnet-group
+        assign_public_ip: yes
+
+    - name: Create prod machine
+      ec2:
+        key_name: key
+        instance_type: t2.micro
+        image: ami-092391a11f8aa4b7b
+        wait: yes
+        group: compile
+        count: 1
+        vpc_subnet_id: subnet-group
+        assign_public_ip: yes
