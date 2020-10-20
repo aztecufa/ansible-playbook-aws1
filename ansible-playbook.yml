@@ -1,3 +1,4 @@
+---
 - name: Create Instances
   hosts: localhost
   gather_facts: False
