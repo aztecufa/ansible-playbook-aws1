@@ -1,6 +1,5 @@
 ---
 - name: Create Instances
-  hosts: localhost
   tasks:
     - name: Create compile machine
       ec2:
