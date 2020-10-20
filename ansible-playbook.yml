@@ -1,9 +1,8 @@
-- hosts: localhost
+- name: Create Instances
+  hosts: localhost
   gather_facts: False
 
   tasks:
-
-    - name: Provision a set of instances
       ec2:
          key_name: key
          group: test
